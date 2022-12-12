@@ -1,5 +1,6 @@
 import os
 import subprocess
+import datetime
 
 # Check if the nmap module is installed
 try:
@@ -19,7 +20,15 @@ hostname = os.uname()[1]
 # Run nmap with fast os detection on all network connections
 nm.scan(arguments='-O --osscan-guess')
 
+# Get the current user and date
+user = os.getlogin()
+date = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
+
 # Open a file with the hostname as the filename
 with open(hostname + '.txt', 'w') as f:
+    # Write the current user and date to the file
+    f.write(f'User: {user}\n')
+    f.write(f'Date: {date}\n\n')
+    
     # Write the results of the scan to the file
     f.write(nm.csv())
