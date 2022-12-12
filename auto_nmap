@@ -1,0 +1,16 @@
+import os
+import nmap
+
+# Initialize the nmap scanner
+nm = nmap.PortScanner()
+
+# Get the hostname of the computer running the script
+hostname = os.uname()[1]
+
+# Run nmap with fast os detection on all network connections
+nm.scan(arguments='-O --osscan-guess')
+
+# Open a file with the hostname as the filename
+with open(hostname + '.txt', 'w') as f:
+    # Write the results of the scan to the file
+    f.write(nm.csv())
