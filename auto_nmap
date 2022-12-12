@@ -1,5 +1,14 @@
 import os
-import nmap
+import subprocess
+
+# Check if the nmap module is installed
+try:
+    import nmap
+except ImportError:
+    # If the module is not installed, install it using pip
+    subprocess.run(['pip', 'install', 'python-nmap'])
+    # Import the module after it has been installed
+    import nmap
 
 # Initialize the nmap scanner
 nm = nmap.PortScanner()
