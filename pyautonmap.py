@@ -6,9 +6,9 @@ import datetime
 try:
     import nmap
 except ImportError:
-    # If the module is not installed, install it using pip
+# If the module is not installed, install it using pip
     subprocess.run(['pip', 'install', 'python-nmap'])
-    # Import the module after it has been installed
+# Import the module after it has been installed
     import nmap
 
 # Initialize the nmap scanner
@@ -26,9 +26,9 @@ date = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
 
 # Open a file with the hostname as the filename
 with open(hostname + '.txt', 'w') as f:
-    # Write the current user and date to the file
+# Write the current user and date to the file
     f.write(f'User: {user}\n')
     f.write(f'Date: {date}\n\n')
     
-    # Write the results of the scan to the file
+# Write the results of the scan to the file
     f.write(nm.csv())
